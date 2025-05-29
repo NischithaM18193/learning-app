@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:16 AS build
+FROM node:latest AS build
 
 # Set the working directory
 WORKDIR /app
@@ -13,8 +13,8 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Build the Angular application
-RUN npm run build --prod
+# Build the Angular application with verbose logging
+RUN npm run build
 
 # Use Nginx to serve the application
 FROM nginx:alpine
